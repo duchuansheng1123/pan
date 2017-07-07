@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<link rel="stylesheet" href="css/base.css">
+	<title>京东首页</title>
+</head>
+<body>
+	<div class="jd_container">
+		<header class="jd_header">
+			<!-- 在header内部套一层盒子，避免使用header导致的头部充满页面 -->
+			<div class="jd_header_box">
+				<a href="" class="icon_logo"></a>
+				<form action="">
+					<span class="icon_search"></span>
+					<input type="text" placeholder="请输入商品名">
+				</form>
+				<a href="" class="jd_login">登录</a>
+			</div>
+		</header>
+		<!-- 轮播图：自适应宽度，高度等比缩放，手指滑动，需要n+2个img标记，以保证幻灯的完美循环效果 -->
+		<div class="jd_banner">
+			<ul class="image_box">
+				<li><a href="#"><img src="images/3.jpg" alt=""></a></li>
+				<li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+				<li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+				<li><a href="#"><img src="images/3.jpg" alt=""></a></li>
+				<li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+			</ul>
+			<!-- 小点点 -->
+			<ul class="point_box">
+				<li class="current"></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>京东</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="Swiper-3.4.2/dist/css/swiper.css">
+	
+	<style>
+	*{
+		margin:0;
+		padding:0;
+		-webkit-tap-highlight-color:transparent;
+		-webkit-box-sizing:border-box;
+	}
+	body{
+		font-size: 14px;
+		font-family: "微软雅黑";
+		color: #333;
+
+	}
+	a{
+		color: #333;
+		text-decoration:none;
+	}
+	a:hover{
+		text-decoration: none;
+	}
+	input{
+		border:none;
+		outline: none;
+		-webkit-appearance:none;
+	}
+	ul,ol{
+		list-style: none;
+	}
+	.jd_container{
+		width: 100%;
+		max-width: 640px;
+		min-width: 320;
+		margin: 0 auto;
+		background-color: rgb(252,244,253);
+	}
+	.jd_container>.jd_header{
+		position: fixed;
+		left: 0;
+		top: 0;
+		height: 44px;
+		width: 100%;
+		z-index: 1000;
+	}
+	.jd_container>.jd_header>.jd_header_box{
+		background-color: rgba(199,21,33,1);
+		height: 100%;
+		width: 100%;
+		max-width: 640px;
+		min-width: 320px;
+		margin: 0 auto;
+		display: flex;
+		align-items:center;
+	}
+	.jd_container>.jd_header>.jd_header_box>.icon_logo{
+		width: 60px;
+		height: 25px;
+		background-image: url(images/logo.jpg);
+		background-size: 60px 25px;
+		margin: 0 5px;
+	}
+	.jd_header_box>form{
+		flex:1;
+		position: relative;
+	}
+	.jd_header_box>form>.icon_search{
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		background-image: url(images/search.png);
+		background-size: 20px 20px;
+		left:5px;
+		top: 5px;
+	}
+	.jd_header_box>form>input{
+		width: 100%;
+		height: 30px;
+		border-radius: 15px;
+		padding-left: 25px;
+	}
+	.jd_header_box>.jd_login{
+		width: 50px;
+		height: 44px;
+		line-height: 44px;
+		color:white;
+		font-size:15px;
+		text-align: center;
+	}
+	/**/
+	.jd_banner{
+		width: 100%;
+		overflow: hidden;
+		position: relative;
+	}
+	.jd_banner>.image_box{
+		width: 1000%;
+		overflow: hidden;
+		transform: translate(-10%);
+	}
+	.jd_banner>.image_box>li{
+		width: 10%;
+		float: left;
+	}
+	.jd_banner>.image_box>li>a,.jd_banner>.image_box>li>a>img{
+		width: 100%;
+		display: block;
+	}
+	.jd_banner>.popint_box{
+		width: 50px;
+		height: 10px;
+		position: absolute;
+		bottom: 5px;
+		left: 50%;
+		margin-left: -25px;
+		overflow: hidden;
+	}
+	.jd_banner>.popint_box>li{
+		width: 10px;
+		height: 10px;
+		border-radius: 5px;
+		border:1px solid black;
+		float: left;
+		margin-left: 10px;
+	}
+	.jd_banner>.popint_box>li:nth-child(1){
+		margin-left: 0
+
+	}
+	.jd_banner>.popint_box>li.round{
+		background-color: black;
+	}
+	/**/
+/*	.polling_box{
+		width: 100%;
+		height:400px; 
+		border-bottom:1px solid black;
+		background-color: red;   
+		display: flex;
+		flex-direction: column;
+	}
+	.polling{
+		display: flex;
+		/*justify-content:space-around;*/
+
+	}*/
+	.jd_nav{
+		display: flex;
+		flex-direction: column;
+		border-bottom:1px solid black;
+		background-color: white;
+	}
+	.jd_nav>.jd_nav_first,.jd_nav>.jd_nav_second{
+		display: flex;
+		justify-content:space-around;
+		margin-top: 10px;
+		margin-bottom:10px;
+	}
+	.jd_nav>.jd_nav_first>div,.jd_nav>.jd_nav_second>div{
+		width: 60px;
+		height: 80px;
+	}
+	.jd_nav>.jd_nav_first>div>img,.jd_nav>.jd_nav_second>div>img{
+		width: 100%;
+		display: block;
+	}
+	.jd_nav>.jd_nav_first>div>p,.jd_nav>.jd_nav_second>div>p{
+		text-align: center;
+		color:#333;
+	}
+	/**/
+	.jd_product{
+		padding: 0 5px;
+	}
+	.jd_product>.jd_product_box{
+		width: 100%;
+		background-color: white;
+		margin-top: 10px;
+		box-shadow:  0 0 1px #e0e0e0;
+	}
+	.jd_product>.jd_product_box>.jd_product_box_title{
+		height: 30px;
+		line-height: 30px;
+		border-bottom: 1px solid #e0e0e0;
+		padding:0 5px;
+	}
+	.jd_product>.jd_product_box>.jd_product_box_title_no_border{
+		border-bottom: none;
+	}
+	.title_left{
+		float: left;
+	}
+	.title_right{
+		float: right;
+	}
+	.title_left>.icon_clock{
+		width: 20px;
+		height: 20px;
+		margin-top: 5px;
+		background-image: url(images/clock.png);
+		background-size: 20px 20px;
+		float: left;
+	}
+	.title_text{
+		color: rgba(199,21,33,1);
+		font-size: 15px;
+		margin-left:10px;
+		float: left;
+	}
+	.title_time{
+		float: left;
+		margin-left: 5px;
+		margin-top: 8px;
+	}
+	.title_time>span{
+		float: left;
+		width:15px;
+		height: 15px;
+		text-align: center;
+		line-height: 15px;
+		background-color: black;
+		color: white;
+		margin-left:5px;
+	}
+	.title_time>.buling{
+		background-color: white;
+		color: black;
+		width: 5px;
+	}
+	/**/
+	.jd_product_box_con>ul{
+		width: 100%;
+		overflow: hidden;
+	}
+	.jd_product_box_con>ul>li{
+		float: left;
+		width: 33.33%;
+	}
+	.jd_product_box_con>ul>li>a{
+		display: block;
+		width: 100%;
+		border-right: 1px solid #c0c0c0;
+	}
+	.jd_product_box_con>ul>li>a>img{
+		width: 80%;
+		display: block;
+		margin: 0 auto;
+	}
+	.jd_product_box_con>ul>li>p{
+		margin-top: 5px;
+		color: rgba(199,21,33,1);
+		text-align: center;
+	}
+	.jd_product_box_con>ul>li>p:last-child{
+		color: #666;
+		text-align: center;
+		text-decoration: line-through;
+	}
+	/**/
+	.w_50{
+		width: 50%;
+		display: block;
+	}
+	.w_50>img{
+		width: 100%;
+		display: block;
+	}
+	.f_left{
+		float: left;
+	}
+	.f_right{
+		float: right;
+	}
+	.b_left{
+		border-left: 1px solid #e0e0e0;
+	}
+	.b_right{
+		border-right:1px solid #e0e0e0;
+	}
+	.b_bottom{
+		border:1px solid #e0e0e0;
+	}
+	.clear_f{
+		overflow: hidden;
+	}
+	</style>
+</head>
+<body>
+	<div class="jd_container">
+		<header class="jd_header">
+			<div class="jd_header_box">
+				<a href="" class="icon_logo"></a>
+				<form action="">
+					<span class="icon_search"></span>
+					<input type="text" placeholder="请输入商品名">
+				</form>
+				<a href="" class="jd_login">登录</a>
+			</div>
+		</header>
+		<!-- 轮播 -->
+		<div class="jd_banner swiper-container">
+			<ul class="image_box  swiper-wrapper">
+				<li class="swiper-slide"><a href=""><img src="images/10.jpg" alt=""></a></li>
+				<li class="swiper-slide"><a href=""><img src="images/1.jpg" alt=""></a></li>
+				<li class="swiper-slide"><a href=""><img src="images/2.jpg" alt=""></a></li>
+				<li class="swiper-slide"><a href=""><img src="images/3.jpg" alt=""></a></li>
+				<li class="swiper-slide"><a href=""><img src="images/6.jpg" alt=""></a></li>
+				<li class="swiper-slide"><a href=""><img src="images/7.jpg" alt=""></a></li>
+				<li class="swiper-slide"><a href=""><img src="images/8.jpg" alt=""></a></li>
+				<li class="swiper-slide"><a href=""><img src="images/9.jpg" alt=""></a></li>
+				<li class="swiper-slide"><a href=""><img src="images/10.jpg" alt=""></a></li>
+				<li class="swiper-slide"><a href=""><img src="images/1.jpg" alt=""></a></li>
+				<!-- pagination -->
+			<div class="swiper-pagination"></div>
+			</ul>
+			<!-- 圆 -->
+			<ul class="popint_box">
+				<li class="round"></li>
+				<li></li>
+				<li></li>
+			</ul>
+			
+		</div>
+		<!--  -->
+	<!-- 	<div class="polling_box">
+			<ul class="polling">
+				<li><a href=""><img src="images/icon.jpg" alt=""></a><p>分类查询</p></li>
+				<li><a href=""><img src="images/icon.jpg" alt=""></a><p>分类查询</p></li>
+				<li><a href=""><img src="images/icon.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/icon.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/icon.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/icon.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/icon.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/icon.jpg" alt=""></a></li>
+			</ul>
+		</div> -->
+		<nav class="jd_nav">
+			<div class="jd_nav_first">
+				<div>
+					<img src="images/icon.jpg" alt=""><p>分类查询</p>
+				</div>
+				<div>
+					<img src="images/icon.jpg" alt=""><p>分类查询</p>
+				</div>
+				<div>
+					<img src="images/icon.jpg" alt=""><p>分类查询</p>
+				</div>
+				<div>
+					<img src="images/icon.jpg" alt=""><p>分类查询</p>
+				</div>
+			</div>
+			<div class="jd_nav_second">
+				<div>
+					<img src="images/icon.jpg" alt=""><p>分类查询</p>
+				</div>
+				<div>
+					<img src="images/icon.jpg" alt=""><p>分类查询</p>
+				</div>
+				<div>
+					<img src="images/icon.jpg" alt=""><p>分类查询</p>
+				</div>
+				<div>
+					<img src="images/icon.jpg" alt=""><p>分类查询</p>
+				</div>
+			</div>
+		</nav>
+		<!--  -->
+		<main 	class="jd_product">
+			<section class="jd_product_box_title jd_product_box_title_no_border">
+				<div class="title_left">
+					<span class="icon_clock"></span>
+					<span class="title_text">掌上秒杀</span>
+					<div class="title_time">
+						<span>0</span>
+						<span>0</span>
+						<span class="buling">:</span>
+						<span>0</span>
+						<span>0</span>
+						<span class="buling">:</span>
+						<span>0</span>
+						<span>0</span>
+					</div>
+				</div>
+				<div class="title_right">更多>></div>
+				<!--  -->
+				<div class="jd_product_box_con">
+					<ul>
+						<li>
+							<a href=""><img src="images/p1.jpg" alt=""></a>
+							<p>&yen;10</p>
+							<p>&yen;<s>100</s></p>
+						</li>
+						<li>
+							<a href=""><img src="images/p1.jpg" alt=""></a>
+							<p>&yen;10</p>
+							<p>&yen;<s>90</s></p>
+						</li>
+						<li>
+							<a href=""><img src="images/p1.jpg" alt=""></a>
+							<p>&yen;10</p>
+							<p>&yen;<s>90</s></p>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="jd_product_box">
+				<div class="jd_product_box_title"><b>京东超市</b></div>
+				<div class="jd_product_box_con clear_f">
+					<a href="" class="w_50 f_left b_right"><img src="images/pf1.jpg" alt=""></a>
+					<a href="" class="f_left w_50 b_bottom"><img src="images/pf2.jpg" alt=""></a>
+					<a href="" class="f_left w_50"><img src="images/pf3.jpg" alt=""></a>
+				</div>
+			</section>
+				<section class="jd_product_box">
+				<div class="jd_product_box_title"><b>京东超市</b></div>
+				<div class="jd_product_box_con clear_f">
+					<a href="" class="f_right w_50 b_left"><img src="images/pf1.jpg" alt=""></a>
+					<a href="" class="f_left w_50 b_bottom"><img src="images/pf2.jpg" alt=""></a>
+					<a href="" class="f_left w_50"><img src="images/pf3.jpg" alt=""></a>
+				</div>
+			</section>
+				<section class="jd_product_box">
+				<div class="jd_product_box_title"><b>京东超市</b></div>
+				<div class="jd_product_box_con clear_f">
+					<a href="" class="w_50 f_left b_right"><img src="images/pf1.jpg" alt=""></a>
+					<a href="" class="w_50 f_right b_bottom"><img src="images/pf2.jpg" alt=""></a>
+					<a href="" class="w_50 f_right"><img src="images/pf3.jpg" alt=""></a>
+				</div>
+			</section>
+		</main>
+	</div>
+	<!--  -->
+
+	<script src="Swiper-3.4.2/dist/js/swiper.js">
+	
+		var swiper =new swiper('.swiper-container',{
+				pagination:'.swiper-pagination',
+				slidesPerView: 'auto',
+				paginationClickable:true,
+				spaceBetween:10,
+		});
+		// 
+		 // var swiper = new Swiper('.swiper-container');
+	</script>
+</body>
+</html>
